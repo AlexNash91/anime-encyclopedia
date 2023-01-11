@@ -8,12 +8,12 @@ const gData = {
 	}
 };
 
-fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
+  fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
 	.then(response => response.json())
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
 
-  const gList = {
+const gList = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
@@ -27,9 +27,9 @@ fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', 
     .catch(err => console.error(err));
 
 
-    // Steam Search API
+// Steam Search API
 
-    const search = {
+const search = {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
@@ -37,12 +37,12 @@ fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', 
       }
     };
     
-    fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
+  fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
 
-      const sNews = {
+const sNews = {
         method: 'GET',
         headers: {
           'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
@@ -50,7 +50,7 @@ fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', 
         }
       };
       
-      fetch('https://steam2.p.rapidapi.com/newsForApp/730/limit/10/300', sNews)
+  fetch('https://steam2.p.rapidapi.com/newsForApp/730/limit/10/300', sNews)
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
