@@ -1,17 +1,56 @@
-const axios = require("axios");
 
-const options = {
-  method: 'GET',
-  url: 'https://animenewsnetwork.p.rapidapi.com/reports.xml',
-  params: {id: '155', nlist: '50', nskip: '50'},
-  headers: {
-    'X-RapidAPI-Key': 'fedebbc7demsh1c790ae5a713c61p1837b1jsnc32cc7e8f148',
-    'X-RapidAPI-Host': 'animenewsnetwork.p.rapidapi.com'
-  }
+// Special Deals API
+const gData = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+		'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+	}
 };
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
+  const gList = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+      'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=10&region=IN', gList)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+
+    // Steam Search API
+
+    const search = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+        'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+      }
+    };
+    
+    fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+
+      const sNews = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+          'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+        }
+      };
+      
+      fetch('https://steam2.p.rapidapi.com/newsForApp/730/limit/10/300', sNews)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
