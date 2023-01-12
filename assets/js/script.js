@@ -84,4 +84,7 @@ $( function() {
   $(".input").autocomplete({
     source: availableTags
   });
+
 } );
+
+
