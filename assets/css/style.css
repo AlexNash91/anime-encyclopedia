@@ -1,4 +1,7 @@
 :root {
+    /* background-color: #292936; */
+
+    
 
 }
 
@@ -16,9 +19,11 @@ header {
 h1 {
     display: flex;
     justify-content: center;
+    /* color:white */
 }
 
 .tile{
     border: solid 1px black;
     height: 700px;
+    /* color: white; */
 }
