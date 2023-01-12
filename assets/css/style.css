@@ -17,3 +17,7 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
+.tile{
+    border: solid 1px black;
+}
