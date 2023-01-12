@@ -1,0 +1,15 @@
+header {
+    border-bottom: solid 2px black;
+    margin-bottom: 1%;
+    
+}
+
+.inputBox {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
