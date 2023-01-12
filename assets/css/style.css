@@ -1,8 +1,8 @@
 :root {
     /* background-color: #292936; */
 
-    
 
+    
 }
 
 .header {
@@ -55,4 +55,5 @@ h1 {
   h2 {
     margin-top: auto;
     height: 700px;
-}
+    width: 1475px;
+  }
