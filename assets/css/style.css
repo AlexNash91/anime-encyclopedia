@@ -1,5 +1,8 @@
 :root {
+    /* background-color: #292936; */
 
+
+    
 }
 
 .header {
@@ -16,6 +19,7 @@
 h1 {
     display: flex;
     justify-content: center;
+    
 }
 
 .Game_tile{
@@ -48,9 +52,9 @@ h1 {
     overflow: scroll;
     border: 1px solid black;
   }
-
+  
   h2 {
     margin-top: auto;
     height: 700px;
     width: 1475px;
-    }
+  }

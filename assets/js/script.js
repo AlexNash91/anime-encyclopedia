@@ -1,17 +1,17 @@
 
 // Special Deals API
 const gData = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-		'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+    'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+  }
 };
 
   fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
 
 const gList = {
     method: 'GET',
@@ -57,7 +57,30 @@ const sNews = {
 
 // autocomplete function
 $( function() {
-  
+  var availableTags = [
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
+    "C",
+    "C++",
+    "Clojure",
+    "COBOL",
+    "ColdFusion",
+    "Erlang",
+    "Fortran",
+    "Groovy",
+    "Haskell",
+    "Java",
+    "JavaScript",
+    "Lisp",
+    "Perl",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Scala",
+    "Scheme"
+  ];
   $(".input").autocomplete({
     source: availableTags
   });
