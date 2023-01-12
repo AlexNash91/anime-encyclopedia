@@ -1,7 +1,4 @@
 :root {
-    /* background-color: #292936; */
-
-
     
 }
 
@@ -19,7 +16,6 @@
 h1 {
     display: flex;
     justify-content: center;
-    
 }
 
 .Game_tile{
@@ -57,3 +53,4 @@ h1 {
     height: 700px;
     width: 1475px;
   }
+
