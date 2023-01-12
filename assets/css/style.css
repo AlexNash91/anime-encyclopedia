@@ -20,4 +20,5 @@ h1 {
 
 .tile{
     border: solid 1px black;
+    height: 700px;
 }
