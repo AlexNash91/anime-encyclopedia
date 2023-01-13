@@ -17,48 +17,60 @@ var newsTile = document.querySelector('.News_tile')
 //   })
 //   .catch(err => console.error(err));
 
-const gList = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-      'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-    }
-  };
+// const gList = {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+//       'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+//     }
+//   };
   
-  fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=1&region=IN', gList)
-    .then(response => response.json())
-    .then(response => {
-      console.log(response) 
-      document.getElementsByClassName('News_tile').innerHTML = response.content;
-    })
-    .catch(err => console.error(err));
+//   fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=1&region=IN', gList)
+//     .then(response => response.json())
+//     .then(response => {
+//       console.log(response) 
+//       document.getElementsByClassName('News_tile').innerHTML = response.content;
+//     })
+//     .catch(err => console.error(err));
 
 
 // Steam Search API
+// Click buttton get string from input
+document.querySelector(".search").addEventListener("click", function (event) {
+ var gameSearch = document.querySelector(".gameSearch").value
+ 
 
-// const search = {
-//       method: 'GET',
-//       headers: {
-//         'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-//         'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
-//       }
-//     };
-    
-  // fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
-  //     .then(response => response.json())
-  //     .then(response => {
-  //       console.log('Search Options')
-  //       console.log(response) 
+ const search = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+          'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+        }
+      };
       
-  //       // Add search options
-  //       response.response.forEach(s => {
-  //         const gName = document.createElement('title')
-  //         gName.innerHTML = s.title
+    fetch('https://steam2.p.rapidapi.com/search/' + gameSearch + '/page/1', search)
+        .then(response => response.json())
+        .then(response => {
+          console.log('Search Options')
+          console.log(response) 
+          for (let i = 0; i < .length; i++) {
+            const element = array[i];
+            
+          }
+        })
+})
+
+// 
+      
+        // // Add search options
+  
           
-  //       });
-  //     })
-  //     .catch(err => console.error(err));
-  //   }
+        // });
+      // })
+      // .catch(err => console.error(err));
+    
+
+  //NewsLetter section
 const sNews = {
         method: 'GET',
         headers: {
