@@ -1,4 +1,6 @@
 var gameTile = document.querySelector('.Game_tile')
+var newsTile = document.querySelector('.News_tile')
+
 // // Special Deals API
 // const gData = {
 //   method: 'GET',
@@ -77,11 +79,9 @@ const sNews = {
             var contents = newsArray[i].contents
             
             var titleEL = document.createElement('h3')
-            gameTile.append(titleEL)
+            newsTile.append(titleEL);
             titleEL.textContent = title
-            
 
-          
           }
           // document.querySelector('.Game_tile').textContent = response.appnews.newsitems;
         })
@@ -118,6 +118,8 @@ const sNews = {
   // });
 
 // } );
+
+
 
 function newsLetter(params) {
   var showNews = document.getElementsByClassName('News_tile');
