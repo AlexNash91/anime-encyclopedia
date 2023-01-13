@@ -45,13 +45,15 @@ h1 {
     resize:vertical;
     overflow: scroll;
     border: 1px solid black;
+    min-width: 200px;
+    min-height: 200px;
   }
   
-  h2 {
+  /* h2 {
     margin-top: auto;
-    height: 700px;
-    width: 1475px;
-  }
+    height: auto;
+    width: auto;
+  } */
 
   
 

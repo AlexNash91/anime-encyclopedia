@@ -1,17 +1,21 @@
+var gameTile = document.querySelector('.Game_tile')
+var newsTile = document.querySelector('.News_tile')
+// // Special Deals API
+// const gData = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+//     'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+//   }
+// };
 
-// Special Deals API
-const gData = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-    'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-  }
-};
-
-  fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+//   fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
+//   .then(response => response.json())
+//   .then(response => {
+//     console.log(response)
+//     console.log(response.content)
+//   })
+//   .catch(err => console.error(err));
 
 const gList = {
     method: 'GET',
@@ -21,27 +25,40 @@ const gList = {
     }
   };
   
-  fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=10&region=IN', gList)
+  fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=1&region=IN', gList)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+      console.log(response) 
+      document.getElementsByClassName('News_tile').innerHTML = response.content;
+    })
     .catch(err => console.error(err));
 
 
 // Steam Search API
 
-const search = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-        'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
-      }
-    };
+// const search = {
+//       method: 'GET',
+//       headers: {
+//         'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+//         'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+//       }
+//     };
     
-  fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
-      .then(response => response.json())
-      .then(response => console.log(response))
-      .catch(err => console.error(err));
-
+  // fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', search)
+  //     .then(response => response.json())
+  //     .then(response => {
+  //       console.log('Search Options')
+  //       console.log(response) 
+      
+  //       // Add search options
+  //       response.response.forEach(s => {
+  //         const gName = document.createElement('title')
+  //         gName.innerHTML = s.title
+          
+  //       });
+  //     })
+  //     .catch(err => console.error(err));
+  //   }
 const sNews = {
         method: 'GET',
         headers: {
@@ -52,39 +69,56 @@ const sNews = {
       
   fetch('https://steam2.p.rapidapi.com/newsForApp/730/limit/10/300', sNews)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => {
+          // console.log(response) 
+          var newsArray = response.appnews.newsitems;
+          console.log("newsArray", newsArray);
+          for(let i = 0; i < newsArray.length; i++){
+            var title = newsArray[i].title
+            var contents = newsArray[i].contents
+            
+            var titleEL = document.createElement('h3')
+            newsTile.append(titleEL);
+            titleEL.textContent = title
+            
+
+          }
+          // document.querySelector('.Game_tile').textContent = response.appnews.newsitems;
+        })
         .catch(err => console.error(err));
 
 // autocomplete function
-$( function() {
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
-  $(".input").autocomplete({
-    source: availableTags
-  });
+// $( function() {
+//   var availableTags = [
+//     "ActionScript",
+//     "AppleScript",
+//     "Asp",
+//     "BASIC",
+//     "C",
+//     "C++",
+//     "Clojure",
+//     "COBOL",
+//     "ColdFusion",
+//     "Erlang",
+//     "Fortran",
+//     "Groovy",
+//     "Haskell",
+//     "Java",
+//     "JavaScript",
+//     "Lisp",
+//     "Perl",
+//     "PHP",
+//     "Python",
+//     "Ruby",
+//     "Scala",
+//     "Scheme"
+//   ];
+  // $(".input").autocomplete({
+  //   source: 
+  // });
 
-} );
+// } );
 
+
+// Adding all names to search bar for autocomplete function
 
