@@ -1,5 +1,6 @@
 var gameTile = document.querySelector('.Game_tile')
 var newsTile = document.querySelector('.News_tile')
+
 // // Special Deals API
 // const gData = {
 //   method: 'GET',
@@ -80,7 +81,6 @@ const sNews = {
             var titleEL = document.createElement('h3')
             newsTile.append(titleEL);
             titleEL.textContent = title
-            
 
           }
           // document.querySelector('.Game_tile').textContent = response.appnews.newsitems;
@@ -119,6 +119,14 @@ const sNews = {
 
 // } );
 
+
+
+function newsLetter(params) {
+  var showNews = document.getElementsByClassName('News_tile');
+  
+ showNews.innerText = 'Does thus work ?'
+}
+newsLetter();
 
 // Adding all names to search bar for autocomplete function
 
