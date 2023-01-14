@@ -78,13 +78,13 @@ document.querySelector(".search").addEventListener("click", function (event) {
             gameTitleEl.className = "games"
             gameTile.append(gameTitleEl)
             gameTile.append(titleImgEl)
-            gametitleEl.textContent = gametitle;
+            gameTitleEl.textContent = gameTitle;
             titleImgEl.innerHTML = gameTitleImg 
             newsLetter(appId)
           }
         })
 
- 
+
         
         
   //NewsLetter section
