@@ -48,6 +48,13 @@ h1 {
     min-width: 200px;
     min-height: 200px;
   }
+.games {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: aqua;
+    margin: 5px 5px;
+}
   
   /* h2 {
     margin-top: auto;
