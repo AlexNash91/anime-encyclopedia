@@ -38,7 +38,9 @@ var newsTile = document.querySelector('.News_tile')
 // Steam Search API
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
- var gameSearch = document.querySelector(".gameSearch").value
+  gameTile.innerHTML = ''
+  var gameSearch = document.querySelector(".gameSearch").value
+
  
 
  const search = {
@@ -51,7 +53,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
       
     fetch('https://steam2.p.rapidapi.com/search/' + gameSearch + '/page/1', search)
         .then(response => response.json())
-        .then(response => {
+        .then(response => {          
           console.log('Search Options')
           console.log(response) 
           var gameOptions = response;
