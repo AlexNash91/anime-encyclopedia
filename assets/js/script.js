@@ -59,7 +59,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var gametitle = gameOptions[i].title;
             var gametitleEl = document.createElement("div");
             gametitleEl.className = "games"
-            gameTile.append(gametitle)
+            gameTile.append(gametitleEl)
             gametitleEl.textContent = gametitle;
             
           }
