@@ -57,10 +57,14 @@ document.querySelector(".search").addEventListener("click", function (event) {
           var gameOptions = response;
           for (let i = 0; i < gameOptions.length; i++) {
             var gametitle = gameOptions[i].title;
+            var gamePicture = gameOptions.imageUrl;
             var gametitleEl = document.createElement("div");
+            var gamePictureEl = document.createElement("img")
             gametitleEl.className = "games"
             gameTile.append(gametitleEl)
             gametitleEl.textContent = gametitle;
+            gameTile.appendChild(gamePictureEl);
+            gamePictureEl.imageUrl = gamePicture;
             
           }
         })
