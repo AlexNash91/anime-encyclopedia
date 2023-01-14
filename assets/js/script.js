@@ -70,17 +70,17 @@ document.querySelector(".search").addEventListener("click", function (event) {
           console.log(response) 
           var gameOptions = response;
           for (let i = 0; i < gameOptions.length; i++) {
-            var gameTitle = gameOptions[i].title;
-            var appId = gameOptions[i].appId
-            var gameTitleEl = document.createElement("div");
-            var titleImgEl = document.createElement('div')
-            var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-            gameTitleEl.className = "games"
-            gameTile.append(gameTitleEl)
-            gameTile.append(titleImgEl)
-            gameTitleEl.textContent = gameTitle;
-            titleImgEl.innerHTML = gameTitleImg 
-            newsLetter(appId)
+
+            var gametitle = gameOptions[i].title;
+            var gamePicture = gameOptions.imageUrl;
+            var gametitleEl = document.createElement("div");
+            var gamePictureEl = document.createElement("img")
+            gametitleEl.className = "games"
+            gameTile.append(gametitleEl)
+            gametitleEl.textContent = gametitle;
+            gameTile.appendChild(gamePictureEl);
+            gamePictureEl.imageUrl = gamePicture;
+            
           }
         })
 
