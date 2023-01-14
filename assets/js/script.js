@@ -60,14 +60,37 @@ document.querySelector(".search").addEventListener("click", function (event) {
           for (let i = 0; i < gameOptions.length; i++) {
             var gametitle = gameOptions[i].title;
             var gametitleEl = document.createElement("div");
+            var titleImgEl = document.createElement('div')
+            var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
             gametitleEl.className = "games"
             gameTile.append(gametitleEl)
+            gameTile.append(titleImgEl)
             gametitleEl.textContent = gametitle;
-            
+            titleImgEl.innerHTML = gameTitleImg
+                    
           }
         })
 })
 
+
+
+fetch('https://steam2.p.rapidapi.com/search/' + gameSearch + '/page/1', search)
+.then(response => response.json())
+.then(response => {
+  console.log('Search Options')
+  console.log(response) 
+  var gameOptions = response;
+  for (let i = 0; i < gameOptions.length; i++) {
+    var gametitle = gameOptions[i].title;
+    var gametitleEl = document.createElement("div");
+    var titleImgEl = document.createElement('div')
+    var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
+    gametitleEl.className = "games"
+    gameTile.append(gametitleEl)
+    gameTile.append(titleImgEl)
+    gametitleEl.textContent = gametitle;
+    titleImgEl.innerHTML = gameTitleImg
+    
 // 
       
         // // Add search options
