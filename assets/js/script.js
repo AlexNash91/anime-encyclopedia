@@ -54,8 +54,13 @@ document.querySelector(".search").addEventListener("click", function (event) {
         .then(response => {
           console.log('Search Options')
           console.log(response) 
-          for (let i = 0; i < .length; i++) {
-            const element = array[i];
+          var gameOptions = response;
+          for (let i = 0; i < gameOptions.length; i++) {
+            var gametitle = gameOptions[i].title;
+            var gametitleEl = document.createElement("div");
+            gametitleEl.className = "games"
+            gameTile.append(gametitle)
+            gametitleEl.textContent = gametitle;
             
           }
         })
