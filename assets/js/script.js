@@ -50,6 +50,7 @@ var newsTile = document.querySelector('.News_tile')
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
   gameTile.innerHTML = ''
+ 
   var gameSearch = document.querySelector(".gameSearch").value
 
  
@@ -69,86 +70,56 @@ document.querySelector(".search").addEventListener("click", function (event) {
           console.log(response) 
           var gameOptions = response;
           for (let i = 0; i < gameOptions.length; i++) {
-            var gametitle = gameOptions[i].title;
+            var gameTitle = gameOptions[i].title;
             var appId = gameOptions[i].appId
-            var gametitleEl = document.createElement("div");
+            var gameTitleEl = document.createElement("div");
             var titleImgEl = document.createElement('div')
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-            gametitleEl.className = "games"
-            gameTile.append(gametitleEl)
+            gameTitleEl.className = "games"
+            gameTile.append(gameTitleEl)
             gameTile.append(titleImgEl)
-            gametitleEl.textContent = gametitle;
+            gameTitleEl.textContent = gameTitle;
             titleImgEl.innerHTML = gameTitleImg 
-            
+            newsLetter(appId)
           }
         })
+
 
         
-})
-    
-
+        
   //NewsLetter section
-const sNews = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-          'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
-        }
-      };
-      
-  fetch('https://steam2.p.rapidapi.com/newsForApp/730/limit/10/300', sNews)
-        .then(response => response.json())
-        .then(response => {
-          console.log(response) 
-          var newsArray = response.appnews.newsitems;
-          console.log("newsArray", newsArray);
-          for(let i = 0; i < newsArray.length; i++){
-            var title = newsArray[i].title
-            var contents = newsArray[i].contents
-            var urlEl = document.createElement('div')
-            var titleEL = document.createElement('h3')
-
-      //Putting the news elements on the page
-            newsTile.append(titleEL, urlEl);
-            titleEL.textContent = title
-            urlEl.innerHTML = contents
-
+  function newsLetter(appId) {
+    newsTile.innerHTML = ''
+    const sNews = {
+            method: 'GET',
+            headers: {
+              'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+              'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+            }
+          };
+          
+      fetch('https://steam2.p.rapidapi.com/newsForApp/' + appId + '/limit/10/300', sNews)
+            .then(response => response.json())
+            .then(response => {
+              console.log(response) 
+              var newsArray = response.appnews.newsitems;
+              console.log("newsArray", newsArray);
+              for(let i = 0; i < newsArray.length; i++){
+                var title = newsArray[i].title
+                var contents = newsArray[i].contents
+                var urlEl = document.createElement('div')
+                var titleEL = document.createElement('h3')
+    
+          //Putting the news elements on the page
+                newsTile.append(titleEL, urlEl);
+                titleEL.textContent = title
+                urlEl.innerHTML = contents
+    
+              }
+            })
+            .catch(err => console.error(err));
           }
-        })
-        .catch(err => console.error(err));
-
-// autocomplete function
-// $( function() {
-//   var availableTags = [
-//     "ActionScript",
-//     "AppleScript",
-//     "Asp",
-//     "BASIC",
-//     "C",
-//     "C++",
-//     "Clojure",
-//     "COBOL",
-//     "ColdFusion",
-//     "Erlang",
-//     "Fortran",
-//     "Groovy",
-//     "Haskell",
-//     "Java",
-//     "JavaScript",
-//     "Lisp",
-//     "Perl",
-//     "PHP",
-//     "Python",
-//     "Ruby",
-//     "Scala",
-//     "Scheme"
-//   ];
-  // $(".input").autocomplete({
-  //   source: 
-  // });
-
-// } );
-
+})
 
 
 
