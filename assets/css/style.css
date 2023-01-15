@@ -60,11 +60,21 @@ h1 {
     border: none;
 }
   
-  /* h2 {
-    margin-top: auto;
-    height: auto;
-    width: auto;
-  } */
+h2 {
+    font-family: 'Oswald', sans-serif;
+}
+  
+a {
+    font-family: 'Oswald', sans-serif;
+}
+
+.button {
+    font-family: 'Oswald', sans-serif;
+}
+  
+.title {
+    font-family: 'Oswald', sans-serif;
+}
 
   
 
