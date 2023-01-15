@@ -72,6 +72,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var gametitle = gameOptions[i].title;
             var appId = gameOptions[i].appId
             var gametitleEl = document.createElement("div");
+            gametitleEl.className = 'title'
             var titleImgEl = document.createElement('div')
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
             gametitleEl.className = "games"
