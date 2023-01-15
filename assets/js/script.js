@@ -153,6 +153,20 @@ const sdButton = document.querySelector("#sd")
 const nlButton = document.querySelector("#nl")
 const gamesButton = document.querySelector("#games")
 
+homeButton.addEventListener('click', function() {
+
+})
+sdButton.addEventListener("click", function() {
+
+})
+nlButton.addEventListener('click', function() {
+
+})
+gamesButton.addEventListener('click', function {
+
+})
+
+
 
 
 //Adding swiper to the games after theyre selected
