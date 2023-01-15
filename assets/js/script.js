@@ -154,15 +154,28 @@ const nlButton = document.querySelector("#nl")
 const gamesButton = document.querySelector("#games")
 
 homeButton.addEventListener('click', function() {
+  console.log("test")
+  document.querySelector('.news_tile').style.display = 'flex'
+  document.querySelector('.game_tile').style.display = 'flex'
+  document.querySelector('.specialDeals_tile').style.display = 'flex'
 
 })
 sdButton.addEventListener("click", function() {
+  console.log("test")
+  document.querySelector('.news_tile').style.display = 'none';
+  document.querySelector('.game_tile').style.display = 'none';
 
 })
 nlButton.addEventListener('click', function() {
+  console.log("test")
+  document.querySelector('.game_tile').style.display = 'none';
+  document.querySelector('.specialDeals_tile').style.display = 'none';
 
 })
 gamesButton.addEventListener('click', function() {
+  console.log("test")
+  document.querySelector('.news_tile').style.display = 'none';
+  document.querySelector('.specialDeals_tile').style.display = 'none';
 
 })
 
