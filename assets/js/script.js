@@ -162,7 +162,7 @@ sdButton.addEventListener("click", function() {
 nlButton.addEventListener('click', function() {
 
 })
-gamesButton.addEventListener('click', function {
+gamesButton.addEventListener('click', function() {
 
 })
 
