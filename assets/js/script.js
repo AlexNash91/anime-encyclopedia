@@ -1,52 +1,74 @@
 var gameTile = document.querySelector('.Game_tile')
 var newsTile = document.querySelector('.News_tile')
-// function dealsList(appId){
-// Special Deals API
-//Gives game data if you provide app id 
-// const gData = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-//     'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-//   }
-// };
+var specialDealsTile = document.querySelector('SpecialDeals_tile')
+// var sliderTile = document.querySelector('.swiper-slide')
 
-//   fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=1593500', gData)
-//   .then(response => response.json())
-//   .then(response => {
-//     console.log(response)
-//     console.log(response.content)
-//     var gameData = response
-//     for (let i = 0; i < gameData.length; i++){
-//       gameData[i].title
-//     }
-//   })
-//   .catch(err => console.error(err));
-// }
 
-// Will list all games that have special offers
-// const gList = {
-//     method: 'GET',
-//     headers: {
-//       'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-//       'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-//     }
-//   };
+
+
+
+
+//Will list all games that have special offers
+function dGames(){
+const gList = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+      'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+    }
+  };
   
-//   fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=1&region=IN', gList)
-//     .then(response => response.json())
-//     .then(response => {
-//       console.log(response) 
-//       var disountedGames = response
-//       for (let i = 0; i < disountedGames.length; i++){
-//         disountedGames[i].title
-//       }
-    
-//     })
-//     .catch(err => console.error(err));
+  fetch('https://steam-special-offers.p.rapidapi.com/games_list/?start=0&count=1&region=IN', gList)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response) 
+      var disountedGames = response
+      for (let i = 0; i < 10; i++){
+        var gameId = disountedGames.games_list[i]
+        console.log(gameId)
+      }
+    dealsList(gameId)
+    })
+    .catch(err => console.error(err));
 
 
-// Steam Search API
+    function dealsList(gameId){
+      //Special Deals API
+      //Gives game data if you provide app id 
+      const gData = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+          'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+        }
+      };
+      for(i = 0; i < 10; i++){
+        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + gameId[i], gData)
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          var specialEl = document.createElement('div')
+          var discountGames = response
+          for(var x = 0; x <= discountGames.length; x++){
+            var specialDeal = discountGames[x].discount
+            var ogPrice = discountGames[x].original_price
+            var gameTitle =discountGames[x].title
+            console.log(specialDeal, ogPrice, gameTitle)
+          // specialDealsTile.append(specialEl)
+          // specialEl.innerText = specialDeal, ogPrice, gameTitle
+          }
+          // var gameData = response
+          // for (let i = 0; i < gameData.length; i++){
+          //   gameData[i].title
+          // }
+        })
+        .catch(err => console.error(err));
+      }
+
+    }
+  }
+    dGames();
+// Steam Search API----------------------------------------------------------------------------
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
   gameTile.innerHTML = ''
@@ -70,18 +92,21 @@ document.querySelector(".search").addEventListener("click", function (event) {
           console.log(response) 
           var gameOptions = response;
           for (let i = 0; i < gameOptions.length; i++) {
-
-            var gametitle = gameOptions[i].title;
-            var gamePicture = gameOptions.imageUrl;
-            var gametitleEl = document.createElement("div");
-            var gamePictureEl = document.createElement("img")
-            gametitleEl.className = "games"
-            gameTile.append(gametitleEl)
-            gametitleEl.textContent = gametitle;
-            gameTile.appendChild(gamePictureEl);
-            gamePictureEl.imageUrl = gamePicture;
-            
+            var gameTitle = gameOptions[i].title;
+            var appId = gameOptions[i].appId
+            var titleImgEl = document.createElement('div')
+            var gameTitleEl = document.createElement("div");
+            var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
+            gameTitleEl.className = "games"
+            gameTile.append(titleImgEl) 
+            gameTile.append(gameTitleEl)
+            titleImgEl.innerHTML = gameTitleImg 
+            gameTitleEl.textContent = gameTitle;
+            newsLetter(appId)
+            // swiperSlide(gameTitleImg)
           }
+
+          
         })
 
 
@@ -122,4 +147,11 @@ document.querySelector(".search").addEventListener("click", function (event) {
 })
 
 
+//function to redirect user to game page when they click on the picutre
 
+
+
+//Adding swiper to the games after theyre selected
+// function swiperSlide(gameTitleImg){
+
+  //}}
