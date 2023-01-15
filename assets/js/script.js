@@ -148,6 +148,10 @@ document.querySelector(".search").addEventListener("click", function (event) {
 
 
 //function to redirect user to game page when they click on the picutre
+const homeButton = document.querySelector("#home")
+const sdButton = document.querySelector("#sd")
+const nlButton = document.querySelector("#nl")
+const gamesButton = document.querySelector("#games")
 
 
 
