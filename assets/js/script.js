@@ -1,6 +1,6 @@
-var gameTile = document.querySelector('.Game_tile')
-var newsTile = document.querySelector('.News_tile')
-var specialDealsTile = document.querySelector('SpecialDeals_tile')
+var gameTile = document.querySelector('.game_tile')
+var newsTile = document.querySelector('.news_tile')
+var specialDealsTile = document.querySelector('specialDeals_tile')
 // var sliderTile = document.querySelector('.swiper-slide')
 
 
