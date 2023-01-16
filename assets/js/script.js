@@ -74,8 +74,18 @@ document.querySelector(".search").addEventListener("click", function (event) {
   gameTile.innerHTML = ''
  
   var gameSearch = document.querySelector(".gameSearch").value
+  var swiperEl = document.createElement('div')
+  swiperEl.setAttribute("class","swiper mySwiper")
+  var swiperWrapper = document.createElement('div')
+  swiperWrapper.setAttribute('class','swiper-wrapper')
+  var pagination = document.createElement('div')
+  pagination.setAttribute('class','swiper-pagination')
+  swiperEl.appendChild(swiperWrapper)
+  
+  swiperEl.appendChild(pagination)
 
- 
+
+
 
  const search = {
         method: 'GET',
@@ -96,17 +106,42 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             var gameTitleEl = document.createElement("div");
+            var swiperSlide = document.createElement('div')
+            swiperSlide.setAttribute ('class','swiper-slide')
+            swiperSlide.id = 'slider'
+
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
             gameTitleEl.className = "games"
-            gameTile.append(titleImgEl) 
+            // gameTile.append(titleImgEl) 
             gameTile.append(gameTitleEl)
-            titleImgEl.innerHTML = gameTitleImg 
+            gameTile.append(swiperEl)
+            swiperWrapper.appendChild(swiperSlide)
+            swiperSlide.innerHTML = gameTitleImg
+            // titleImgEl.innerHTML = gameTitleImg 
             gameTitleEl.textContent = gameTitle;
             newsLetter(appId)
+
+       
+            
             // swiperSlide(gameTitleImg)
           }
 
-          
+          var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+            },
+          });
         })
 
 
@@ -144,8 +179,28 @@ document.querySelector(".search").addEventListener("click", function (event) {
             })
             .catch(err => console.error(err));
           }
+
+          
 })
 
+//Slider Function
+
+// var swiper = new Swiper(".mySwiper", {
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: "auto",
+//   coverflowEffect: {
+//     rotate: 50,
+//     stretch: 0,
+//     depth: 100,
+//     modifier: 1,
+//     slideShadows: true,
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//   },
+// });
 
 //function to redirect user to game page when they click on the picutre
 
@@ -213,5 +268,6 @@ gamesButton.addEventListener('click', function() {
 
 //Adding swiper to the games after theyre selected
 // function swiperSlide(gameTitleImg){
+  
 
   //}}
