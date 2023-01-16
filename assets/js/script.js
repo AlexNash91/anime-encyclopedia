@@ -1,6 +1,6 @@
-var gameTile = document.querySelector('.Game_tile')
-var newsTile = document.querySelector('.News_tile')
-var specialDealsTile = document.querySelector('SpecialDeals_tile')
+var gameTile = document.querySelector('.game_tile')
+var newsTile = document.querySelector('.news_tile')
+var specialDealsTile = document.querySelector('specialDeals_tile')
 // var sliderTile = document.querySelector('.swiper-slide')
 
 
@@ -148,6 +148,66 @@ document.querySelector(".search").addEventListener("click", function (event) {
 
 
 //function to redirect user to game page when they click on the picutre
+
+
+
+// navbar block
+const homeButton = document.querySelector("#home")
+const sdButton = document.querySelector("#sd")
+const nlButton = document.querySelector("#nl")
+const gamesButton = document.querySelector("#games")
+
+homeButton.addEventListener('click', function() {
+  document.querySelector('.news_tile').style.display = 'flex'
+  document.querySelector('.game_tile').style.display = 'flex'
+  document.querySelector('.specialDeals_tile').style.display = 'flex'
+
+  document.querySelector('.news_tile').style.width = 'auto'
+  document.querySelector('.game_tile').style.width = 'auto'
+  document.querySelector('.specialDeals_tile').style.width = 'auto'
+
+  document.querySelector('.news_tile').style.height = 'auto'
+  document.querySelector('.game_tile').style.height = 'auto'
+  document.querySelector('.specialDeals_tile').style.height = 'auto'
+})
+
+sdButton.addEventListener("click", function() {
+  // resetting tiles
+  document.querySelector('.news_tile').style.display = 'flex'
+  document.querySelector('.game_tile').style.display = 'flex'
+  document.querySelector('.specialDeals_tile').style.display = 'flex'
+  // hiding tiles
+  document.querySelector('.news_tile').style.display = 'none';
+  document.querySelector('.game_tile').style.display = 'none';
+  // filling up the page with selected tile 
+  document.querySelector('.specialDeals_tile').style.width = '2000px';
+  document.querySelector('.specialDeals_tile').style.height = '1000px';
+})
+
+nlButton.addEventListener('click', function() {
+  document.querySelector('.news_tile').style.display = 'flex'
+  document.querySelector('.game_tile').style.display = 'flex'
+  document.querySelector('.specialDeals_tile').style.display = 'flex'
+
+  document.querySelector('.game_tile').style.display = 'none';
+  document.querySelector('.specialDeals_tile').style.display = 'none';
+
+  document.querySelector('.news_tile').style.width = '2000px';
+  document.querySelector('.news_tile').style.height = '1000px';
+})
+
+gamesButton.addEventListener('click', function() {
+  document.querySelector('.news_tile').style.display = 'flex'
+  document.querySelector('.game_tile').style.display = 'flex'
+  document.querySelector('.specialDeals_tile').style.display = 'flex'
+
+  document.querySelector('.news_tile').style.display = 'none';
+  document.querySelector('.specialDeals_tile').style.display = 'none';
+
+  document.querySelector('.game_tile').style.width = '2000px';
+  document.querySelector('.game_tile').style.height = '1000px';
+})
+
 
 
 
