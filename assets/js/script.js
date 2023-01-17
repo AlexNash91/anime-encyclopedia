@@ -1,6 +1,6 @@
 var gameTile = document.querySelector('.game_tile')
 var newsTile = document.querySelector('.news_tile')
-var specialDealsTile = document.querySelector('specialDeals_tile')
+var specialDealsTile = document.querySelector('.specialDeals_tile')
 // var sliderTile = document.querySelector('.swiper-slide')
 
 
@@ -22,56 +22,69 @@ const gList = {
     .then(response => response.json())
     .then(response => {
       console.log(response) 
+      var ids = []
       var disountedGames = response
       for (let i = 0; i < 10; i++){
         var gameId = disountedGames.games_list[i]
         console.log(gameId)
         // parseInt(gameId)
+        ids.push(gameId)
       }
-    dealsList(gameId)
+      dealsList(ids)
+
     })
     .catch(err => console.error(err));
   
 
-    function dealsList(gameId){
+    function dealsList(ids){
       //Special Deals API
       //Gives game data if you provide app id 
-      
-      const gData = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-          'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-        }
-      };
-      for (let i = 0; i < 10; i++) {
+      var index = 0
+      setInterval(function(){
+
+        const gData = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+            'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+          }
+        };
+        if (index < 10) {
+          
         
-        
-      
-        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + gameId[i], gData)
+        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + ids[index] , gData)
         .then(response => response.json())
         .then(response => {
           console.log(response)
-          // var specialEl = document.createElement('div')
-          // var discountGames = response
-          // for(var x = 0; x <= discountGames.length; x++){
-          //   var specialDeal = discountGames[x].discount
-          //   var ogPrice = discountGames[x].original_price
-          //   var gameTitle =discountGames[x].title
-          //   console.log(specialDeal, ogPrice, gameTitle)
-          // specialDealsTile.append(specialEl)
-          // specialEl.innerText = specialDeal, ogPrice, gameTitle
-          // }
+          var specialEl = document.createElement('div')
+          var discountGames = response
+          for(var x = 0; x <= discountGames.length; x++){
+            var specialDeal = discountGames[x].discount
+            var ogPrice = discountGames[x].original_price
+            var gameTitle =discountGames[x].title
+            specialDealsTile.append(specialEl)
+            specialEl.innerText = specialDeal, ogPrice, gameTitle
+          }
           // var gameData = response
           // for (let i = 0; i < gameData.length; i++){
           //   gameData[i].title
           // }
         })
         .catch(err => console.error(err));
+        // Go to the next id after each call
+        index++;
+      }
+
+
+      },250)
+      console.log(ids)
+  
+      
+      
       
       
 
-    }
+    
   }
 }
     dGames();
@@ -118,13 +131,9 @@ document.querySelector(".search").addEventListener("click", function (event) {
             // swiperSlide.id = 'slider'
             var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-            var img = new Image()
-            img.src = gameOptions[i].imgUrl
-            img.onclick = function(){
-              gameTitleImg.href = gameUrl
-            }
-            
-            
+          //   var img = new Image()
+          //   img.src = gameOptions[i].imgUrl
+          //  img.innerHTML = ''           
             gameTitleEl.className = "games"
             gameTile.append(titleImgEl) 
             gameTile.append(gameTitleEl)
