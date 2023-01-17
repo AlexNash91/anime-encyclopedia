@@ -228,9 +228,9 @@ const nlButton = document.querySelector("#nl")
 const gamesButton = document.querySelector("#games")
 
 homeButton.addEventListener('click', function() {
-  document.querySelector('.news_tile').style.display = 'flex'
-  document.querySelector('.game_tile').style.display = 'flex'
-  document.querySelector('.specialDeals_tile').style.display = 'flex'
+  document.querySelector('.news_tile').style.display = 'block'
+  document.querySelector('.game_tile').style.display = 'block'
+  document.querySelector('.specialDeals_tile').style.display = 'block'
 
   document.querySelector('.news_tile').style.width = 'auto'
   document.querySelector('.game_tile').style.width = 'auto'
@@ -243,9 +243,9 @@ homeButton.addEventListener('click', function() {
 
 sdButton.addEventListener("click", function() {
   // resetting tiles
-  document.querySelector('.news_tile').style.display = 'flex'
-  document.querySelector('.game_tile').style.display = 'flex'
-  document.querySelector('.specialDeals_tile').style.display = 'flex'
+  document.querySelector('.news_tile').style.display = 'block'
+  document.querySelector('.game_tile').style.display = 'block'
+  document.querySelector('.specialDeals_tile').style.display = 'block'
   // hiding tiles
   document.querySelector('.news_tile').style.display = 'none';
   document.querySelector('.game_tile').style.display = 'none';
@@ -255,9 +255,9 @@ sdButton.addEventListener("click", function() {
 })
 
 nlButton.addEventListener('click', function() {
-  document.querySelector('.news_tile').style.display = 'flex'
-  document.querySelector('.game_tile').style.display = 'flex'
-  document.querySelector('.specialDeals_tile').style.display = 'flex'
+  document.querySelector('.news_tile').style.display = 'block'
+  document.querySelector('.game_tile').style.display = 'block'
+  document.querySelector('.specialDeals_tile').style.display = 'block'
 
   document.querySelector('.game_tile').style.display = 'none';
   document.querySelector('.specialDeals_tile').style.display = 'none';
@@ -267,9 +267,9 @@ nlButton.addEventListener('click', function() {
 })
 
 gamesButton.addEventListener('click', function() {
-  document.querySelector('.news_tile').style.display = 'flex'
-  document.querySelector('.game_tile').style.display = 'flex'
-  document.querySelector('.specialDeals_tile').style.display = 'flex'
+  document.querySelector('.news_tile').style.display = 'block'
+  document.querySelector('.game_tile').style.display = 'block'
+  document.querySelector('.specialDeals_tile').style.display = 'block'
 
   document.querySelector('.news_tile').style.display = 'none';
   document.querySelector('.specialDeals_tile').style.display = 'none';
