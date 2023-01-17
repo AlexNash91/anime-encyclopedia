@@ -120,6 +120,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
         .then(response => {          
           console.log('Search Options')
           console.log(response) 
+          document.querySelector('.resizable').style.maxHeight = '30%'
           var gameOptions = response;
           for (let i = 0; i < gameOptions.length; i++) {
             var gameTitle = gameOptions[i].title;
@@ -244,10 +245,6 @@ homeButton.addEventListener('click', function() {
   document.querySelector('.news_tile').style.width = 'auto'
   document.querySelector('.game_tile').style.width = 'auto'
   document.querySelector('.specialDeals_tile').style.width = 'auto'
-
-  // document.querySelector('.news_tile').style.height = 'auto'
-  // document.querySelector('.game_tile').style.height = 'auto'
-  // document.querySelector('.specialDeals_tile').style.height = 'auto'
 
   document.querySelector('.resizable').style.maxHeight = '30%'
 })

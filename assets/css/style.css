@@ -31,7 +31,7 @@
 }
 
 .resizable {
-    max-height: 30%;
+    max-height: 75%;
     resize: vertical;
     overflow: scroll;
     border: 1px solid black;
