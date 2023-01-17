@@ -26,15 +26,17 @@ const gList = {
       for (let i = 0; i < 10; i++){
         var gameId = disountedGames.games_list[i]
         console.log(gameId)
+        // parseInt(gameId)
       }
     dealsList(gameId)
     })
     .catch(err => console.error(err));
-
+  
 
     function dealsList(gameId){
       //Special Deals API
       //Gives game data if you provide app id 
+      
       const gData = {
         method: 'GET',
         headers: {
@@ -42,31 +44,36 @@ const gList = {
           'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
         }
       };
-      for(i = 0; i < 10; i++){
+      for (let i = 0; i < 10; i++) {
+        
+        
+      
         fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + gameId[i], gData)
         .then(response => response.json())
         .then(response => {
           console.log(response)
-          var specialEl = document.createElement('div')
-          var discountGames = response
-          for(var x = 0; x <= discountGames.length; x++){
-            var specialDeal = discountGames[x].discount
-            var ogPrice = discountGames[x].original_price
-            var gameTitle =discountGames[x].title
-            console.log(specialDeal, ogPrice, gameTitle)
+          // var specialEl = document.createElement('div')
+          // var discountGames = response
+          // for(var x = 0; x <= discountGames.length; x++){
+          //   var specialDeal = discountGames[x].discount
+          //   var ogPrice = discountGames[x].original_price
+          //   var gameTitle =discountGames[x].title
+          //   console.log(specialDeal, ogPrice, gameTitle)
           // specialDealsTile.append(specialEl)
           // specialEl.innerText = specialDeal, ogPrice, gameTitle
-          }
+          // }
           // var gameData = response
           // for (let i = 0; i < gameData.length; i++){
           //   gameData[i].title
           // }
         })
         .catch(err => console.error(err));
-      }
+      
+      
 
     }
   }
+}
     dGames();
 // Steam Search API----------------------------------------------------------------------------
 // Click buttton get string from input
@@ -74,15 +81,15 @@ document.querySelector(".search").addEventListener("click", function (event) {
   gameTile.innerHTML = ''
  
   var gameSearch = document.querySelector(".gameSearch").value
-  var swiperEl = document.createElement('div')
-  swiperEl.setAttribute("class","swiper mySwiper")
-  var swiperWrapper = document.createElement('div')
-  swiperWrapper.setAttribute('class','swiper-wrapper')
-  var pagination = document.createElement('div')
-  pagination.setAttribute('class','swiper-pagination')
-  swiperEl.appendChild(swiperWrapper)
+  // var swiperEl = document.createElement('div')
+  // swiperEl.setAttribute("class","swiper mySwiper")
+  // var swiperWrapper = document.createElement('div')
+  // swiperWrapper.setAttribute('class','swiper-wrapper')
+  // var pagination = document.createElement('div')
+  // swiperEl.appendChild(swiperWrapper)
+  // pagination.setAttribute('class','swiper-pagination')
   
-  swiperEl.appendChild(pagination)
+  // swiperEl.appendChild(pagination)
 
 
 
@@ -106,19 +113,27 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             var gameTitleEl = document.createElement("div");
-            var swiperSlide = document.createElement('div')
-            swiperSlide.setAttribute ('class','swiper-slide')
-            swiperSlide.id = 'slider'
-
+            // var swiperSlide = document.createElement('div')
+            // swiperSlide.setAttribute ('class','swiper-slide')
+            // swiperSlide.id = 'slider'
+            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
+            var img = new Image()
+            img.src = gameOptions[i].imgUrl
+            img.onclick = function(){
+              gameTitleImg.href = gameUrl
+            }
+            
+            
             gameTitleEl.className = "games"
-            // gameTile.append(titleImgEl) 
+            gameTile.append(titleImgEl) 
             gameTile.append(gameTitleEl)
-            gameTile.append(swiperEl)
-            swiperWrapper.appendChild(swiperSlide)
-            swiperSlide.innerHTML = gameTitleImg
-            // titleImgEl.innerHTML = gameTitleImg 
+            // gameTile.append(swiperEl)
+            // swiperWrapper.appendChild(swiperSlide)
+            // swiperSlide.innerHTML = gameTitleImg
+            titleImgEl.innerHTML = gameTitleImg 
             gameTitleEl.textContent = gameTitle;
+            gameTitleEl.innerHTML = gameUrl
             newsLetter(appId)
 
        
@@ -126,23 +141,23 @@ document.querySelector(".search").addEventListener("click", function (event) {
             // swiperSlide(gameTitleImg)
           }
 
-          var swiper = new Swiper(".mySwiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            coverflowEffect: {
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            },
-            pagination: {
-              el: ".swiper-pagination",
-            },
-          });
-        })
+        //   var swiper = new Swiper(".mySwiper", {
+        //     effect: "coverflow",
+        //     grabCursor: true,
+        //     centeredSlides: true,
+        //     slidesPerView: "auto",
+        //     coverflowEffect: {
+        //       rotate: 50,
+        //       stretch: 0,
+        //       depth: 100,
+        //       modifier: 1,
+        //       slideShadows: true,
+        //     },
+        //     pagination: {
+        //       el: ".swiper-pagination",
+        //     },
+        //   });
+        // })
 
 
         
@@ -161,9 +176,9 @@ document.querySelector(".search").addEventListener("click", function (event) {
       fetch('https://steam2.p.rapidapi.com/newsForApp/' + appId + '/limit/10/300', sNews)
             .then(response => response.json())
             .then(response => {
-              console.log(response) 
+              // console.log(response) 
               var newsArray = response.appnews.newsitems;
-              console.log("newsArray", newsArray);
+              // console.log("newsArray", newsArray);
               for(let i = 0; i < newsArray.length; i++){
                 var title = newsArray[i].title
                 var contents = newsArray[i].contents
@@ -200,7 +215,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
 //   pagination: {
 //     el: ".swiper-pagination",
 //   },
-// });
+});
 
 //function to redirect user to game page when they click on the picutre
 
