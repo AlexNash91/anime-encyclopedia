@@ -2,6 +2,7 @@
 .header {
     border-bottom: solid 2px black;
     margin-bottom: 1%;    
+
 }
 
 .inputBox {
@@ -11,16 +12,12 @@
 }
 
 .Game_tile{
-   
-    height: auto;
     width: auto;
     margin-top: 2%;
     margin-left: 1%;
 }
 
 .News_tile {
-    
-    height: auto;
     width: auto;
     bottom: 0;
     left: 0;
@@ -28,14 +25,14 @@
 }
 
 .SpecialDeals_tile {
-    
     width: auto;
     height: auto;
     border: none;    
 }
 
 .resizable {
-    resize:vertical;
+    max-height: 30%;
+    resize: vertical;
     overflow: scroll;
     border: 1px solid black;
     min-width: 200px;
@@ -49,13 +46,15 @@
     flex-direction: column;
     flex-wrap: wrap;
     background-color: aqua;
-    
     border: none;
 }
-  
+
+.is-vertical {
+    height: 100%;
+}
+
 h2 {
-    font-family: 'Oswald', sans-serif;
-    
+    font-family: 'Oswald', sans-serif;   
 }
   
 a {

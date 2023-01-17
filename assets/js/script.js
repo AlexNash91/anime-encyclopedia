@@ -259,8 +259,8 @@ sdButton.addEventListener("click", function() {
   document.querySelector('.news_tile').style.display = 'none';
   document.querySelector('.game_tile').style.display = 'none';
   // filling up the page with selected tile 
-  document.querySelector('.specialDeals_tile').style.width = '2000px';
-  document.querySelector('.specialDeals_tile').style.height = '1000px';
+  document.querySelector('.specialDeals_tile').style.width = '100%';
+  document.querySelector('.specialDeals_tile').style.height = '100%';
 })
 
 nlButton.addEventListener('click', function() {
@@ -271,8 +271,8 @@ nlButton.addEventListener('click', function() {
   document.querySelector('.game_tile').style.display = 'none';
   document.querySelector('.specialDeals_tile').style.display = 'none';
 
-  document.querySelector('.news_tile').style.width = '2000px';
-  document.querySelector('.news_tile').style.height = '1000px';
+  document.querySelector('.news_tile').style.width = '100%';
+  document.querySelector('.news_tile').style.height = '100%';
 })
 
 gamesButton.addEventListener('click', function() {
@@ -283,8 +283,8 @@ gamesButton.addEventListener('click', function() {
   document.querySelector('.news_tile').style.display = 'none';
   document.querySelector('.specialDeals_tile').style.display = 'none';
 
-  document.querySelector('.game_tile').style.width = '2000px';
-  document.querySelector('.game_tile').style.height = '1000px';
+  document.querySelector('.game_tile').style.width = '100%';
+  document.querySelector('.game_tile').style.height = '100%';
 })
 
 
