@@ -49,9 +49,10 @@
     border: none;
 }
 
-.is-vertical {
+.is-ancestor {
     height: 100%;
 }
+
 
 h2 {
     font-family: 'Oswald', sans-serif;   

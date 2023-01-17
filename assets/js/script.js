@@ -245,9 +245,11 @@ homeButton.addEventListener('click', function() {
   document.querySelector('.game_tile').style.width = 'auto'
   document.querySelector('.specialDeals_tile').style.width = 'auto'
 
-  document.querySelector('.news_tile').style.height = 'auto'
-  document.querySelector('.game_tile').style.height = 'auto'
-  document.querySelector('.specialDeals_tile').style.height = 'auto'
+  // document.querySelector('.news_tile').style.height = 'auto'
+  // document.querySelector('.game_tile').style.height = 'auto'
+  // document.querySelector('.specialDeals_tile').style.height = 'auto'
+
+  document.querySelector('.resizable').style.maxHeight = '30%'
 })
 
 sdButton.addEventListener("click", function() {
@@ -260,7 +262,7 @@ sdButton.addEventListener("click", function() {
   document.querySelector('.game_tile').style.display = 'none';
   // filling up the page with selected tile 
   document.querySelector('.specialDeals_tile').style.width = '100%';
-  document.querySelector('.specialDeals_tile').style.height = '100%';
+  document.querySelector('.specialDeals_tile').style.maxHeight = '100%';
 })
 
 nlButton.addEventListener('click', function() {
@@ -272,7 +274,7 @@ nlButton.addEventListener('click', function() {
   document.querySelector('.specialDeals_tile').style.display = 'none';
 
   document.querySelector('.news_tile').style.width = '100%';
-  document.querySelector('.news_tile').style.height = '100%';
+  document.querySelector('.news_tile').style.maxHeight = '100%';
 })
 
 gamesButton.addEventListener('click', function() {
@@ -284,7 +286,7 @@ gamesButton.addEventListener('click', function() {
   document.querySelector('.specialDeals_tile').style.display = 'none';
 
   document.querySelector('.game_tile').style.width = '100%';
-  document.querySelector('.game_tile').style.height = '100%';
+  document.querySelector('.game_tile').style.maxHeight = '100%';
 })
 
 
