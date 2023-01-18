@@ -3,6 +3,8 @@ body {
   position: relative;
   /* width: 100%; */
   height: 100%;
+  background-color: rgb(45,198,249);
+  
 }
 
 body {
@@ -26,8 +28,11 @@ body {
   background-size: cover;
   width: 300px;
   height: 300px;
-  background-color: rgb(224, 224, 76);
+  background-color: rgb(233, 233, 74);
+  font-family: 'Rubik Bubbles', cursive;
 }
+
+
 
 .swiper-slide img {
   display: block;
