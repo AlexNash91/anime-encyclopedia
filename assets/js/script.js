@@ -153,9 +153,9 @@ document.querySelector(".search").addEventListener("click", function (event) {
               centeredSlides: true,
               slidesPerView: "auto",
               coverflowEffect: {
-                rotate: 20,
+                rotate: 7,
                 stretch: 0,
-                depth: 50,
+                depth: 0,
                 modifier: 1,
                 slideShadows: true,
               },
