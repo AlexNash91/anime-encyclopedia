@@ -1,6 +1,6 @@
 body {
     background-color: rgb(45,198,249);
-    background-size: contain;
+    background-size: cover;
 }
 .header {
     border-bottom: solid 2px black;
