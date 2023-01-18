@@ -98,10 +98,6 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
 
-            // var gameTitleEl = document.createElement("div");
-            // var swiperSlide = document.createElement('div')
-            // swiperSlide.setAttribute ('class','swiper-slide')
-            // swiperSlide.id = 'slider'
             var img = `
             <img  src="${gameOptions[i].imgUrl}" alt="">
             <div>${gameTitle}</div>
@@ -152,10 +148,8 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
       fetch('https://steam2.p.rapidapi.com/newsForApp/' + appId + '/limit/10/300', sNews)
             .then(response => response.json())
-            .then(response => {
-              // console.log(response) 
-              var newsArray = response.appnews.newsitems;
-              // console.log("newsArray", newsArray);
+            .then(response => {              
+              var newsArray = response.appnews.newsitems;           
               for(let i = 0; i < newsArray.length; i++){
                 var title = newsArray[i].title
                 var contents = newsArray[i].contents
