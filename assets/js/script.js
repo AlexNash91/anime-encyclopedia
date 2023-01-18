@@ -146,15 +146,6 @@ document.querySelector(".search").addEventListener("click", function (event) {
   // gameTile.innerHTML = ''
  
   var gameSearch = document.querySelector(".gameSearch").value
-  // var swiperEl = document.createElement('div')
-  // swiperEl.setAttribute("class","swiper mySwiper")
-  // var swiperWrapper = document.createElement('div')
-  // swiperWrapper.setAttribute('class','swiper-wrapper')
-  // var pagination = document.createElement('div')
-  // swiperEl.appendChild(swiperWrapper)
-  // pagination.setAttribute('class','swiper-pagination')
-  
-  // swiperEl.appendChild(pagination)
 
 
 
@@ -186,10 +177,6 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
 
-            // var gameTitleEl = document.createElement("div");
-            // var swiperSlide = document.createElement('div')
-            // swiperSlide.setAttribute ('class','swiper-slide')
-            // swiperSlide.id = 'slider'
             var img = `
             <img  src="${gameOptions[i].imgUrl}" alt="">
             <div> ${gameTitle}
@@ -208,6 +195,8 @@ document.querySelector(".search").addEventListener("click", function (event) {
             <div>Release Date : ${gameRelease}</div>
             <div>Reviews : ${gameReview}</div>
             `
+            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
+
             titleImgEl.innerHTML = img
             var img = `<img  src="${gameOptions[i].imgUrl}" alt="">
             <div>${gameTitle}</div>`
@@ -231,51 +220,16 @@ document.querySelector(".search").addEventListener("click", function (event) {
                 el: ".swiper-pagination",
               },
             });
-            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-          //   var img = new Image()
-          //   img.src = gameOptions[i].imgUrl
-          //  img.innerHTML = ''           
-            // gameTitleEl.className = "games"
-            // gameTile.append(titleImgEl) 
-            // gameTile.append(gameTitleEl)
-            // gameTile.append(swiperEl)
-            // swiperWrapper.appendChild(swiperSlide)
-            // swiperSlide.innerHTML = gameTitleImg
-            // titleImgEl.innerHTML = gameTitleImg 
-            // gameTitleEl.textContent = gameTitle;
-            // gameTitleEl.innerHTML = gameUrl
             newsLetter(appId)
 
-       
-            
-            // swiperSlide(gameTitleImg)
           }
 
-        //   var swiper = new Swiper(".mySwiper", {
-        //     effect: "coverflow",
-        //     grabCursor: true,
-        //     centeredSlides: true,
-        //     slidesPerView: "auto",
-        //     coverflowEffect: {
-        //       rotate: 50,
-        //       stretch: 0,
-        //       depth: 100,
-        //       modifier: 1,
-        //       slideShadows: true,
-        //     },
-        //     pagination: {
-        //       el: ".swiper-pagination",
-        //     },
-        //   });
-        // })
-
-
         
-        
+
   //NewsLetter section
   function newsLetter(appId) {
-    // newsTile.innerHTML = ''
+    
     const sNews = {
             method: 'GET',
             headers: {
@@ -286,13 +240,8 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
       fetch('https://steam2.p.rapidapi.com/newsForApp/' + appId + '/limit/10/300', sNews)
             .then(response => response.json())
-            .then(response => {
-              console.log(response) 
-              var newsArray = response.appnews.newsitems;
-              // console.log("newsArray", newsArray);
-              var news = document.querySelector("#news")
-              news.textContent = "";
-
+            
+      
             .then(response => {              
               var newsArray = response.appnews.newsitems;           
               for(let i = 0; i < newsArray.length; i++){
@@ -314,14 +263,8 @@ document.querySelector(".search").addEventListener("click", function (event) {
                  </P
                 `
                 newsEl.innerHTML = newsContent
-                news.appendChild(newsEl);
-                // var urlEl = document.createElement('div')
-                // var titleEL = document.createElement('h3')
-    
-          //Putting the news elements on the page
-                // newsTile.append(titleEL, urlEl);
-                // titleEL.textContent = title
-                // urlEl.innerHTML = contents
+                newsTile.appendChild(newsEl);
+           
     
               }
             })
@@ -331,26 +274,10 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
 })
 
-//Slider Function
 
-// var swiper = new Swiper(".mySwiper", {
-//   effect: "coverflow",
-//   grabCursor: true,
-//   centeredSlides: true,
-//   slidesPerView: "auto",
-//   coverflowEffect: {
-//     rotate: 50,
-//     stretch: 0,
-//     depth: 100,
-//     modifier: 1,
-//     slideShadows: true,
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//   },
 });
 
-//function to redirect user to game page when they click on the picutre
+
 
 
 
@@ -408,12 +335,3 @@ gamesButton.addEventListener('click', function() {
   document.querySelector('.game_tile').style.width = '100%';
   document.querySelector('.game_tile').style.maxHeight = '100%';
 })
-
-
-
-
-//Adding swiper to the games after theyre selected
-// function swiperSlide(gameTitleImg){
-  
-
-  //}}
