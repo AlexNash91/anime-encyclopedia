@@ -1,13 +1,12 @@
-html,
 body {
     background-color: rgb(45,198,249);
     background-size: cover;
     height: 60rem;
 }
+
 .header {
     border-bottom: solid 2px black;
     margin-bottom: 1%;    
-
 }
 
 .inputBox {
@@ -47,51 +46,37 @@ body {
     max-width: 2000px;
 }
 
-/* .games {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: aqua;
-    border: none; */
-
-
 .is-ancestor {
     height: 100%;
 }
 
 
 h2 {
-    /* font-family: 'Oswald', sans-serif;    */
     font-family: 'Rubik Bubbles', cursive;
     font-size: 35px;
 }
   
 a {
-    /* font-family: 'Oswald', sans-serif; */
     font-family: 'Rubik Bubbles', cursive;
     font-size: 25px;
 }
 
 .button {
-    /* font-family: 'Oswald', sans-serif; */
     background-color:rgb(189, 18, 18);
     font-size: 25px;
 }
   
 .title {
-    /* font-family: 'Oswald', sans-serif; */
     font-family: 'Rubik Bubbles', cursive;
     font-size: 25px;
 }
 
 .gamer{
-    /* font-family: 'Oswald', sans-serif;  */
     color: red;
     
 }
 
 .button.bColor {
-
     background-color:rgb(189, 18, 18) ;
 }
 
