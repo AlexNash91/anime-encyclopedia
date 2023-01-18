@@ -1,7 +1,7 @@
 var gameTile = document.querySelector('.game_tile')
 var newsTile = document.querySelector('.news_tile')
 var specialDealsTile = document.querySelector('.specialDeals_tile')
-
+var gameDeals = []
 //Will list all games that have special offers
 function dGames(){
 const gList = {
@@ -16,54 +16,70 @@ const gList = {
     .then(response => response.json())
     .then(response => {
       console.log(response) 
-      var ids = []
+      // var ids = []
       var disountedGames = response
       for (let i = 0; i < 10; i++){
         var gameId = disountedGames.games_list[i]
         console.log(gameId)
-        ids.push(gameId)
+        dealsList(gameId) 
       }
-      dealsList(ids)
-
     })
     .catch(err => console.error(err));
   
+}
 
-    function dealsList(ids){
-      //Special Deals API
-      //Gives game data if you provide app id 
-      var index = 0
-      setInterval(function(){
 
-        const gData = {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-            'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-          }
-        };
-        if (index < 10) {
-        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + ids[index] , gData)
-        .then(response => response.json())
-        .then(response => {
-          console.log(response)
-          var specialEl = document.createElement('div')
-          var discountGames = response
-          for(var x = 0; x <= discountGames.length; x++){
-            var specialDeal = discountGames[x].discount
-            var ogPrice = discountGames[x].original_price
-            var gameTitle =discountGames[x].title
-            specialDealsTile.append(specialEl)
-            specialEl.innerText = specialDeal, ogPrice, gameTitle
-          }
-        })
-        .catch(err => console.error(err));
-        // Go to the next id after each call
-        index++;
+function dealsList(id){
+  //Special Deals API
+  //Gives game data if you provide app id 
+  // var index = 0
+    const gData = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+        'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
       }
-      },250)
-      console.log(ids) 
-  }
+    };
+    // if (index < 10) {
+    fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + id , gData)
+    .then(response => response.json())
+    .then(response => {
+      console.log('Individual Game', response)
+      var discountGame = response
+      // gameDeals.push(discountGame)
+      showDeals(discountGame)
+    })
+    .catch(err => console.error(err));
+    // Go to the next id after each call
+    // index++;
+  // }
+  // discountArray(gameDeals)
+// console.log(ids) 
+}
+
+function showDeals(deal){
+  
+  console.log('Discounted games function', deal)
+
+    var specialEl = document.createElement('div')
+    var discountEl = document.createElement('h3')
+    var priceEl = document.createElement('h3')
+    var titleEl = document.createElement('h3')
+    var specialDeal = deal.discount
+    var ogPrice = deal.original_price
+    var gameTitle =deal.title
+    var discountPrice = deal.price
+    specialEl.append(discountEl)
+    specialEl.append(priceEl)
+    specialEl.append(titleEl)
+    discountEl.textContent = gameTitle 
+    // priceEl.textContent = 
+    // specialEl.innerText = 'Inner text to show this works'
+    console.log(specialDeal, ogPrice, gameTitle)
+
+    specialDealsTile.append(specialEl)
+  
+
 }
     dGames();
 // Steam Search API----------------------------------------------------------------------------
