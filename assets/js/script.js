@@ -1,7 +1,10 @@
 var gameTile = document.querySelector('.game_tile')
 var newsTile = document.querySelector('.news_tile')
 var specialDealsTile = document.querySelector('.specialDeals_tile')
+
+// var sliderTile = document.querySelector('.swiper-slide')
 var gameDeals = []
+
 //Will list all games that have special offers
 function dGames(){
 const gList = {
@@ -21,12 +24,66 @@ const gList = {
       for (let i = 0; i < 10; i++){
         var gameId = disountedGames.games_list[i]
         console.log(gameId)
+
+        // parseInt(gameId)
+        ids.push(gameId)
+
         dealsList(gameId) 
+
       }
     })
     .catch(err => console.error(err));
   
 }
+
+
+    function dealsList(ids){
+      //Special Deals API
+      //Gives game data if you provide app id 
+      var index = 0
+      setInterval(function(){
+
+        const gData = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
+            'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
+          }
+        };
+        if (index < 10) {
+          
+        
+        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + ids[index] , gData)
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          var specialEl = document.createElement('div')
+          var discountGames = response
+          for(var x = 0; x <= discountGames.length; x++){
+            var specialDeal = discountGames[x].discount
+            var ogPrice = discountGames[x].original_price
+            var gameTitle =discountGames[x].title
+            specialDealsTile.append(specialEl)
+            specialEl.innerText = specialDeal, ogPrice, gameTitle
+          }
+          // var gameData = response
+          // for (let i = 0; i < gameData.length; i++){
+          //   gameData[i].title
+          // }
+        })
+        .catch(err => console.error(err));
+        // Go to the next id after each call
+        index++;
+      }
+
+
+      },250)
+      console.log(ids)
+  
+      
+
+    
+  }
 
 
 function dealsList(id){
@@ -80,12 +137,27 @@ function showDeals(deal){
     specialDealsTile.append(specialEl)
   
 
+
 }
     dGames();
 // Steam Search API----------------------------------------------------------------------------
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
-   var gameSearch = document.querySelector(".gameSearch").value
+  // gameTile.innerHTML = ''
+ 
+  var gameSearch = document.querySelector(".gameSearch").value
+  // var swiperEl = document.createElement('div')
+  // swiperEl.setAttribute("class","swiper mySwiper")
+  // var swiperWrapper = document.createElement('div')
+  // swiperWrapper.setAttribute('class','swiper-wrapper')
+  // var pagination = document.createElement('div')
+  // swiperEl.appendChild(swiperWrapper)
+  // pagination.setAttribute('class','swiper-pagination')
+  
+  // swiperEl.appendChild(pagination)
+
+
+
 
  const search = {
         method: 'GET',
@@ -113,6 +185,21 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
+
+            // var gameTitleEl = document.createElement("div");
+            // var swiperSlide = document.createElement('div')
+            // swiperSlide.setAttribute ('class','swiper-slide')
+            // swiperSlide.id = 'slider'
+            var img = `
+            <img  src="${gameOptions[i].imgUrl}" alt="">
+            <div> ${gameTitle}
+            </div>
+            <div>Price : ${gamePrice}</div>
+            <div>Release Date : ${gameRelease}</div>
+            <div>Reviews : ${gameReview} </div>
+            `
+            titleImgEl.innerHTML = img
+
 
             var img = `
             <img  src="${gameOptions[i].imgUrl}" alt="">
@@ -144,16 +231,51 @@ document.querySelector(".search").addEventListener("click", function (event) {
                 el: ".swiper-pagination",
               },
             });
-         
+            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-
+          //   var img = new Image()
+          //   img.src = gameOptions[i].imgUrl
+          //  img.innerHTML = ''           
+            // gameTitleEl.className = "games"
+            // gameTile.append(titleImgEl) 
+            // gameTile.append(gameTitleEl)
+            // gameTile.append(swiperEl)
+            // swiperWrapper.appendChild(swiperSlide)
+            // swiperSlide.innerHTML = gameTitleImg
+            // titleImgEl.innerHTML = gameTitleImg 
+            // gameTitleEl.textContent = gameTitle;
+            // gameTitleEl.innerHTML = gameUrl
             newsLetter(appId)
+
+       
+            
+            // swiperSlide(gameTitleImg)
           }
 
+        //   var swiper = new Swiper(".mySwiper", {
+        //     effect: "coverflow",
+        //     grabCursor: true,
+        //     centeredSlides: true,
+        //     slidesPerView: "auto",
+        //     coverflowEffect: {
+        //       rotate: 50,
+        //       stretch: 0,
+        //       depth: 100,
+        //       modifier: 1,
+        //       slideShadows: true,
+        //     },
+        //     pagination: {
+        //       el: ".swiper-pagination",
+        //     },
+        //   });
+        // })
+
+
+        
+        
   //NewsLetter section
-  // Gives current updates on the searched game
   function newsLetter(appId) {
-    newsTile.innerHTML = ''
+    // newsTile.innerHTML = ''
     const sNews = {
             method: 'GET',
             headers: {
@@ -164,18 +286,42 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
       fetch('https://steam2.p.rapidapi.com/newsForApp/' + appId + '/limit/10/300', sNews)
             .then(response => response.json())
+            .then(response => {
+              console.log(response) 
+              var newsArray = response.appnews.newsitems;
+              // console.log("newsArray", newsArray);
+              var news = document.querySelector("#news")
+              news.textContent = "";
+
             .then(response => {              
               var newsArray = response.appnews.newsitems;           
               for(let i = 0; i < newsArray.length; i++){
+                
                 var title = newsArray[i].title
                 var contents = newsArray[i].contents
-                var urlEl = document.createElement('div')
-                var titleEL = document.createElement('h3')
+                var author = newsArray[i].author
+                var newsEl = document.createElement("div")
+                newsEl.className = "newsDiv"
+                
+                
+                var newsContent = `
+                <h2> Title : ${title} 
+                </h2>
+                <div> 
+                News: ${contents}
+                 </div>
+                 <p> Author : ${author}
+                 </P
+                `
+                newsEl.innerHTML = newsContent
+                news.appendChild(newsEl);
+                // var urlEl = document.createElement('div')
+                // var titleEL = document.createElement('h3')
     
           //Putting the news elements on the page
-                newsTile.append(titleEL, urlEl);
-                titleEL.textContent = title
-                urlEl.innerHTML = contents
+                // newsTile.append(titleEL, urlEl);
+                // titleEL.textContent = title
+                // urlEl.innerHTML = contents
     
               }
             })
@@ -185,11 +331,30 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
 })
 
+//Slider Function
+
+// var swiper = new Swiper(".mySwiper", {
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: "auto",
+//   coverflowEffect: {
+//     rotate: 50,
+//     stretch: 0,
+//     depth: 100,
+//     modifier: 1,
+//     slideShadows: true,
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//   },
 });
 
+//function to redirect user to game page when they click on the picutre
 
-// Navbar block that changes the tile elements---------------------------------------------------
-// ----------------------------------------------------------------------------------------------
+
+
+// navbar block
 const homeButton = document.querySelector("#home")
 const sdButton = document.querySelector("#sd")
 const nlButton = document.querySelector("#nl")
@@ -243,3 +408,12 @@ gamesButton.addEventListener('click', function() {
   document.querySelector('.game_tile').style.width = '100%';
   document.querySelector('.game_tile').style.maxHeight = '100%';
 })
+
+
+
+
+//Adding swiper to the games after theyre selected
+// function swiperSlide(gameTitleImg){
+  
+
+  //}}
