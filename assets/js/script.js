@@ -91,7 +91,7 @@ const gList = {
 // Steam Search API----------------------------------------------------------------------------
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
-  gameTile.innerHTML = ''
+  // gameTile.innerHTML = ''
  
   var gameSearch = document.querySelector(".gameSearch").value
   // var swiperEl = document.createElement('div')
@@ -120,30 +120,56 @@ document.querySelector(".search").addEventListener("click", function (event) {
         .then(response => {          
           console.log('Search Options')
           console.log(response) 
-          document.querySelector('.resizable').style.maxHeight = '30%'
+          document.querySelector('.resizable').style.maxHeight = '100%'
           var gameOptions = response;
+          var swiperDiv = document.querySelector(".swiper-wrapper");
+          swiperDiv.textContent = ""
           for (let i = 0; i < gameOptions.length; i++) {
             var gameTitle = gameOptions[i].title;
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
-            var gameTitleEl = document.createElement("div");
+            titleImgEl.className = "swiper-slide"
+            // var gameTitleEl = document.createElement("div");
             // var swiperSlide = document.createElement('div')
             // swiperSlide.setAttribute ('class','swiper-slide')
             // swiperSlide.id = 'slider'
+            var img = `
+            <img  src="${gameOptions[i].imgUrl}" alt="">
+            <div>${gameTitle}</div>
+            `
+            titleImgEl.innerHTML = img
+            swiperDiv.appendChild(titleImgEl)
+
+            var swiper = new Swiper(".mySwiper", {
+              effect: "coverflow",
+              grabCursor: true,
+              centeredSlides: true,
+              slidesPerView: "auto",
+              coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 50,
+                modifier: 1,
+                slideShadows: true,
+              },
+              pagination: {
+                el: ".swiper-pagination",
+              },
+            });
             var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
           //   var img = new Image()
           //   img.src = gameOptions[i].imgUrl
           //  img.innerHTML = ''           
-            gameTitleEl.className = "games"
-            gameTile.append(titleImgEl) 
-            gameTile.append(gameTitleEl)
+            // gameTitleEl.className = "games"
+            // gameTile.append(titleImgEl) 
+            // gameTile.append(gameTitleEl)
             // gameTile.append(swiperEl)
             // swiperWrapper.appendChild(swiperSlide)
             // swiperSlide.innerHTML = gameTitleImg
-            titleImgEl.innerHTML = gameTitleImg 
-            gameTitleEl.textContent = gameTitle;
-            gameTitleEl.innerHTML = gameUrl
+            // titleImgEl.innerHTML = gameTitleImg 
+            // gameTitleEl.textContent = gameTitle;
+            // gameTitleEl.innerHTML = gameUrl
             newsLetter(appId)
 
        

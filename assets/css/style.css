@@ -1,4 +1,7 @@
-
+body {
+    background-color: rgb(45,198,249);
+    background-size: contain;
+}
 .header {
     border-bottom: solid 2px black;
     margin-bottom: 1%;    
@@ -31,7 +34,7 @@
 }
 
 .resizable {
-    max-height: 75%;
+    /* max-height: 75%; */
     resize: vertical;
     overflow: scroll;
     border: 1px solid black;
@@ -39,15 +42,16 @@
     min-height: 200px;
     border: none;
     margin-left: 12px;
+    max-width: 2000px;
 }
 
-.games {
+/* .games {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     background-color: aqua;
-    border: none;
-}
+    border: none; */
+
 
 .is-ancestor {
     height: 100%;
@@ -64,10 +68,22 @@ a {
 
 .button {
     font-family: 'Oswald', sans-serif;
+    background-color:rgb(189, 18, 18)
 }
   
 .title {
     font-family: 'Oswald', sans-serif;
+}
+
+.imgClass {
+    font-family: 'Oswald', sans-serif; 
+    color: red;
+    
+}
+
+.button.is-info {
+
+    background-color:rgb(189, 18, 18) ;
 }
 
   
