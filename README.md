@@ -1,8 +1,8 @@
-# Games News Site
+# Games Deals Site
 
 ## Description 
 
-The Games News Site allows users to enter a search querry, see what games steam has for that querry, and see a news feed associated with the title you select. Games that appear on the page will link to the game on the Steam store.
+The Games Deals Site allows users to enter a search querry, see what games steam has for that querry, and see a news feed associated with the title you select, as well as any deals available. Games that appear on the page will link to the game on the Steam store.
 
 ## Usage 
 
@@ -12,7 +12,7 @@ Enter a querry in the search bar, and games will appear in a list. Select these 
 
 [https://github.com/AlexNash91/game-deals]
 
-[![Games-news](https://user-images.githubusercontent.com/11567624/213211954-d959af18-895b-4e0f-8aaa-e4e131e00a8d.png)]
+[![Games-Deals](https://user-images.githubusercontent.com/11567624/213211954-d959af18-895b-4e0f-8aaa-e4e131e00a8d.png)]
 
 
 ## Credits 
