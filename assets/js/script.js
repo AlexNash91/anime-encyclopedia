@@ -90,9 +90,26 @@ document.querySelector(".search").addEventListener("click", function (event) {
           swiperDiv.textContent = ""
           for (let i = 0; i < gameOptions.length; i++) {
             var gameTitle = gameOptions[i].title;
+            gameTitle.className = "gamer"
+            var gamePrice = gameOptions[i].price;
+            var gameRelease = gameOptions[i].released;
+            var gameReview = gameOptions[i].reviewSummary;
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
+
+            // var gameTitleEl = document.createElement("div");
+            // var swiperSlide = document.createElement('div')
+            // swiperSlide.setAttribute ('class','swiper-slide')
+            // swiperSlide.id = 'slider'
+            var img = `
+            <img  src="${gameOptions[i].imgUrl}" alt="">
+            <div>${gameTitle}</div>
+            <div>Price : ${gamePrice}</div>
+            <div>Release Date : ${gameRelease}</div>
+            <div>Reviews : ${gameReview}</div>
+            `
+            titleImgEl.innerHTML = img
             var img = `<img  src="${gameOptions[i].imgUrl}" alt="">
             <div>${gameTitle}</div>`
             var gameUrl = '<a href="' + gameOptions[i].url +'">'+ img +'</a>'
@@ -105,9 +122,9 @@ document.querySelector(".search").addEventListener("click", function (event) {
               centeredSlides: true,
               slidesPerView: "auto",
               coverflowEffect: {
-                rotate: 50,
+                rotate: 7,
                 stretch: 0,
-                depth: 50,
+                depth: 0,
                 modifier: 1,
                 slideShadows: true,
               },
