@@ -35,7 +35,6 @@ body {
 }
 
 .resizable {
-    /* max-height: 75%; */
     resize: vertical;
     overflow: scroll;
     border: 1px solid black;
@@ -49,7 +48,6 @@ body {
 .is-ancestor {
     height: 100%;
 }
-
 
 h2 {
     font-family: 'Rubik Bubbles', cursive;
