@@ -126,6 +126,10 @@ document.querySelector(".search").addEventListener("click", function (event) {
           swiperDiv.textContent = ""
           for (let i = 0; i < gameOptions.length; i++) {
             var gameTitle = gameOptions[i].title;
+            gameTitle.className = "gamer"
+            var gamePrice = gameOptions[i].price;
+            var gameRelease = gameOptions[i].released;
+            var gameReview = gameOptions[i].reviewSummary;
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
@@ -136,6 +140,9 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var img = `
             <img  src="${gameOptions[i].imgUrl}" alt="">
             <div>${gameTitle}</div>
+            <div>Price : ${gamePrice}</div>
+            <div>Release Date : ${gameRelease}</div>
+            <div>Reviews : ${gameReview}</div>
             `
             titleImgEl.innerHTML = img
             swiperDiv.appendChild(titleImgEl)
@@ -146,7 +153,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
               centeredSlides: true,
               slidesPerView: "auto",
               coverflowEffect: {
-                rotate: 50,
+                rotate: 20,
                 stretch: 0,
                 depth: 50,
                 modifier: 1,
