@@ -1,12 +1,6 @@
 var gameTile = document.querySelector('.game_tile')
 var newsTile = document.querySelector('.news_tile')
 var specialDealsTile = document.querySelector('.specialDeals_tile')
-// var sliderTile = document.querySelector('.swiper-slide')
-
-
-
-
-
 
 //Will list all games that have special offers
 function dGames(){
@@ -27,7 +21,6 @@ const gList = {
       for (let i = 0; i < 10; i++){
         var gameId = disountedGames.games_list[i]
         console.log(gameId)
-        // parseInt(gameId)
         ids.push(gameId)
       }
       dealsList(ids)
@@ -50,8 +43,6 @@ const gList = {
           }
         };
         if (index < 10) {
-          
-        
         fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + ids[index] , gData)
         .then(response => response.json())
         .then(response => {
@@ -65,47 +56,20 @@ const gList = {
             specialDealsTile.append(specialEl)
             specialEl.innerText = specialDeal, ogPrice, gameTitle
           }
-          // var gameData = response
-          // for (let i = 0; i < gameData.length; i++){
-          //   gameData[i].title
-          // }
         })
         .catch(err => console.error(err));
         // Go to the next id after each call
         index++;
       }
-
-
       },250)
-      console.log(ids)
-  
-      
-      
-      
-      
-
-    
+      console.log(ids) 
   }
 }
     dGames();
 // Steam Search API----------------------------------------------------------------------------
 // Click buttton get string from input
 document.querySelector(".search").addEventListener("click", function (event) {
-  // gameTile.innerHTML = ''
- 
-  var gameSearch = document.querySelector(".gameSearch").value
-  // var swiperEl = document.createElement('div')
-  // swiperEl.setAttribute("class","swiper mySwiper")
-  // var swiperWrapper = document.createElement('div')
-  // swiperWrapper.setAttribute('class','swiper-wrapper')
-  // var pagination = document.createElement('div')
-  // swiperEl.appendChild(swiperWrapper)
-  // pagination.setAttribute('class','swiper-pagination')
-  
-  // swiperEl.appendChild(pagination)
-
-
-
+   var gameSearch = document.querySelector(".gameSearch").value
 
  const search = {
         method: 'GET',
@@ -133,6 +97,7 @@ document.querySelector(".search").addEventListener("click", function (event) {
             var appId = gameOptions[i].appId
             var titleImgEl = document.createElement('div')
             titleImgEl.className = "swiper-slide"
+
             // var gameTitleEl = document.createElement("div");
             // var swiperSlide = document.createElement('div')
             // swiperSlide.setAttribute ('class','swiper-slide')
@@ -145,6 +110,10 @@ document.querySelector(".search").addEventListener("click", function (event) {
             <div>Reviews : ${gameReview}</div>
             `
             titleImgEl.innerHTML = img
+            var img = `<img  src="${gameOptions[i].imgUrl}" alt="">
+            <div>${gameTitle}</div>`
+            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ img +'</a>'
+            titleImgEl.innerHTML = gameUrl
             swiperDiv.appendChild(titleImgEl)
 
             var swiper = new Swiper(".mySwiper", {
@@ -163,49 +132,14 @@ document.querySelector(".search").addEventListener("click", function (event) {
                 el: ".swiper-pagination",
               },
             });
-            var gameUrl = '<a href="' + gameOptions[i].url +'">'+ gameOptions[i].title +'</a>'
+         
             var gameTitleImg = '<img src="' +  gameOptions[i].imgUrl + '"/>';
-          //   var img = new Image()
-          //   img.src = gameOptions[i].imgUrl
-          //  img.innerHTML = ''           
-            // gameTitleEl.className = "games"
-            // gameTile.append(titleImgEl) 
-            // gameTile.append(gameTitleEl)
-            // gameTile.append(swiperEl)
-            // swiperWrapper.appendChild(swiperSlide)
-            // swiperSlide.innerHTML = gameTitleImg
-            // titleImgEl.innerHTML = gameTitleImg 
-            // gameTitleEl.textContent = gameTitle;
-            // gameTitleEl.innerHTML = gameUrl
-            newsLetter(appId)
 
-       
-            
-            // swiperSlide(gameTitleImg)
+            newsLetter(appId)
           }
 
-        //   var swiper = new Swiper(".mySwiper", {
-        //     effect: "coverflow",
-        //     grabCursor: true,
-        //     centeredSlides: true,
-        //     slidesPerView: "auto",
-        //     coverflowEffect: {
-        //       rotate: 50,
-        //       stretch: 0,
-        //       depth: 100,
-        //       modifier: 1,
-        //       slideShadows: true,
-        //     },
-        //     pagination: {
-        //       el: ".swiper-pagination",
-        //     },
-        //   });
-        // })
-
-
-        
-        
   //NewsLetter section
+  // Gives current updates on the searched game
   function newsLetter(appId) {
     newsTile.innerHTML = ''
     const sNews = {
@@ -241,30 +175,11 @@ document.querySelector(".search").addEventListener("click", function (event) {
           
 })
 
-//Slider Function
-
-// var swiper = new Swiper(".mySwiper", {
-//   effect: "coverflow",
-//   grabCursor: true,
-//   centeredSlides: true,
-//   slidesPerView: "auto",
-//   coverflowEffect: {
-//     rotate: 50,
-//     stretch: 0,
-//     depth: 100,
-//     modifier: 1,
-//     slideShadows: true,
-//   },
-//   pagination: {
-//     el: ".swiper-pagination",
-//   },
 });
 
-//function to redirect user to game page when they click on the picutre
 
-
-
-// navbar block
+// Navbar block that changes the tile elements---------------------------------------------------
+// ----------------------------------------------------------------------------------------------
 const homeButton = document.querySelector("#home")
 const sdButton = document.querySelector("#sd")
 const nlButton = document.querySelector("#nl")
@@ -318,12 +233,3 @@ gamesButton.addEventListener('click', function() {
   document.querySelector('.game_tile').style.width = '100%';
   document.querySelector('.game_tile').style.maxHeight = '100%';
 })
-
-
-
-
-//Adding swiper to the games after theyre selected
-// function swiperSlide(gameTitleImg){
-  
-
-  //}}
