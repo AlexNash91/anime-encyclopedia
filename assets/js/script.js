@@ -2,7 +2,6 @@ var gameTile = document.querySelector('.game_tile')
 var newsTile = document.querySelector('.news_tile')
 var specialDealsTile = document.querySelector('.specialDeals_tile')
 
-// var sliderTile = document.querySelector('.swiper-slide')
 var gameDeals = []
 
 //Will list all games that have special offers
@@ -36,84 +35,29 @@ const gList = {
   
 }
 
-
-    function dealsList(ids){
-      //Special Deals API
-      //Gives game data if you provide app id 
-      var index = 0
-      setInterval(function(){
-
-        const gData = {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
-            'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
-          }
-        };
-        if (index < 10) {
-          
-        
-        fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + ids[index] , gData)
-        .then(response => response.json())
-        .then(response => {
-          console.log(response)
-          var specialEl = document.createElement('div')
-          var discountGames = response
-          for(var x = 0; x <= discountGames.length; x++){
-            var specialDeal = discountGames[x].discount
-            var ogPrice = discountGames[x].original_price
-            var gameTitle =discountGames[x].title
-            specialDealsTile.append(specialEl)
-            specialEl.innerText = specialDeal, ogPrice, gameTitle
-          }
-          // var gameData = response
-          // for (let i = 0; i < gameData.length; i++){
-          //   gameData[i].title
-          // }
-        })
-        .catch(err => console.error(err));
-        // Go to the next id after each call
-        index++;
-      }
-
-
-      },250)
-      console.log(ids)
-  
-      
-
-    
-  }
-
-
+  //Gives game data if you provide app id 
 function dealsList(id){
   //Special Deals API
-  //Gives game data if you provide app id 
-  // var index = 0
     const gData = {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': 'ca0d7078c7msh3a5399a85e0761ep1266a1jsnf2235aab77dc',
         'X-RapidAPI-Host': 'steam-special-offers.p.rapidapi.com'
       }
-    };
-    // if (index < 10) {
+    }
+
     fetch('https://steam-special-offers.p.rapidapi.com/games_data/?app_id=' + id , gData)
     .then(response => response.json())
     .then(response => {
       console.log('Individual Game', response)
       var discountGame = response
-      // gameDeals.push(discountGame)
       showDeals(discountGame)
     })
     .catch(err => console.error(err));
-    // Go to the next id after each call
-    // index++;
-  // }
-  // discountArray(gameDeals)
-// console.log(ids) 
+
 }
 
+// Shows information from deals list function on the page
 function showDeals(deal){
   
   console.log('Discounted games function', deal)
@@ -146,9 +90,6 @@ document.querySelector(".search").addEventListener("click", function (event) {
   // gameTile.innerHTML = ''
  
   var gameSearch = document.querySelector(".gameSearch").value
-
-
-
 
  const search = {
         method: 'GET',
